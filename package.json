@@ -1,7 +1,7 @@
 {
   "name": "key-server",
   "version": "1.0.0",
-  "description": "Servidor de keys online",
+  "description": "Servidor de keys con panel web",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

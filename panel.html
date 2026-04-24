@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Panel de Keys</title>
+</head>
+<body style="font-family: Arial; text-align:center;">
+
+<h1>🔑 Panel de Keys</h1>
+
+<button onclick="crearKey()">Crear Key</button>
+
+<h2>Keys:</h2>
+<ul id="lista"></ul>
+
+<script>
+async function crearKey() {
+  const res = await fetch('/create', { method: 'POST' });
+  const data = await res.json();
+  alert("Nueva key: " + data.key);
+  cargarKeys();
+}
+
+async function cargarKeys() {
+  const res = await fetch('/keys');
+  const keys = await res.json();
+
+  const lista = document.getElementById('lista');
+  lista.innerHTML = '';
+
+  keys.forEach(k => {
+    const li = document.createElement('li');
+    li.textContent = k;
+    lista.appendChild(li);
+  });
+}
+
+cargarKeys();
+</script>
+
+</body>
+</html>
