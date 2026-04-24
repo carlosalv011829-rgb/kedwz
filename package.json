@@ -1,0 +1,19 @@
+{
+  "name": "transformicekeysystem",
+  "version": "1.0.0",
+  "description": "Launcher Transformice",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "tu",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^41.3.0",
+    "electron-builder": "^26.8.1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
