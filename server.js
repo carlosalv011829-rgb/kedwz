@@ -3,12 +3,8 @@ const app = express();
 
 app.use(express.json());
 
-// 🔑 LISTA DE KEYS (puedes cambiar luego)
-let keys = [
-  "ABC123",
-  "HACK2026",
-  "PRO999"
-];
+// 🔑 KEY VÁLIDA
+let keys = ["1234"];
 
 app.post('/check', (req, res) => {
   const { key } = req.body;
@@ -20,6 +16,8 @@ app.post('/check', (req, res) => {
   res.json({ status: "invalid" });
 });
 
-app.listen(3000, () => {
-  console.log("Servidor corriendo en http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Servidor corriendo en puerto " + PORT);
 });
