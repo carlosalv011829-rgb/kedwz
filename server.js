@@ -5,21 +5,18 @@ const app = express();
 
 app.use(express.json());
 
-// 📂 archivo donde se guardan las keys
 const FILE = path.join(__dirname, 'keys.json');
 
-// cargar keys
 let keys = [];
 if (fs.existsSync(FILE)) {
   keys = JSON.parse(fs.readFileSync(FILE));
 }
 
-// guardar keys
 function saveKeys() {
   fs.writeFileSync(FILE, JSON.stringify(keys, null, 2));
 }
 
-// 🔐 validar key (launcher)
+// VALIDAR KEY (launcher)
 app.post('/check', (req, res) => {
   const { key } = req.body;
 
@@ -30,7 +27,7 @@ app.post('/check', (req, res) => {
   res.json({ status: "invalid" });
 });
 
-// ➕ crear key (panel)
+// CREAR KEY (panel)
 app.post('/create', (req, res) => {
   const newKey = Math.random().toString(36).substring(2, 10).toUpperCase();
 
@@ -40,12 +37,12 @@ app.post('/create', (req, res) => {
   res.json({ key: newKey });
 });
 
-// 📋 ver keys
+// VER KEYS
 app.get('/keys', (req, res) => {
   res.json(keys);
 });
 
-// 🌐 panel web
+// PANEL WEB
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'panel.html'));
 });
