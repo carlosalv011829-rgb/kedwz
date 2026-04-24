@@ -1,11 +1,12 @@
 const express = require('express');
 const fs = require('fs');
+const path = require('path');
 const app = express();
 
 app.use(express.json());
 
 // 📂 archivo donde se guardan las keys
-const FILE = 'keys.json';
+const FILE = path.join(__dirname, 'keys.json');
 
 // cargar keys
 let keys = [];
@@ -46,7 +47,7 @@ app.get('/keys', (req, res) => {
 
 // 🌐 panel web
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/panel.html');
+  res.sendFile(path.join(__dirname, 'panel.html'));
 });
 
 const PORT = process.env.PORT || 3000;
